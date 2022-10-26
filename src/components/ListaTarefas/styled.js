@@ -68,6 +68,20 @@ export const Tarefa = styled.li`
   }
 `;
 
+export const TarefaCompleta = styled.li`
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 1rem;
+border: 1px solid black;
+border-radius: 10px;
+padding: 6px 8px;
+transition: background-color 0.3s;
+background-color: lightgray;
+text-decoration:line-through;
+opacity: .4;
+`;
+
 export const LinhaHorizontal = styled.hr`
   width: 100%;
   margin: 16px;

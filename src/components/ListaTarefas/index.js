@@ -7,13 +7,17 @@ import {
   TaskInput,
   AddTaskButton,
   RemoveButton,
-  LinhaHorizontal
+  LinhaHorizontal,
 } from "./styled";
 import bin from "../../assets/bin.png";
+import { TarefasCompletas } from "../TarefasCompletas/TarefasCompletas";
 
 export function ListaTarefas() {
   const [lista, setLista] = useState(["Fazer exercícios", "Estudar React"]);
   const [novaTarefa, setNovaTarefa] = useState("");
+  const [listaDeletada, setListaDeletada] = useState([]);
+
+
 
   const onChangeTarefa = (event) => {
     setNovaTarefa(event.target.value);
@@ -27,8 +31,13 @@ export function ListaTarefas() {
 
   const removeTarefa = (tarefa) => {
     const listaFiltrada = lista.filter((item) => item !== tarefa);
+    const paraDeletar = [...listaDeletada, tarefa]
+    setListaDeletada(paraDeletar)
     setLista(listaFiltrada);
   };
+  
+
+
 
   return (
     <ListaTarefasContainer>
@@ -53,8 +62,11 @@ export function ListaTarefas() {
             );
           })}
         </ul>
+        
       </ListaContainer>
       <LinhaHorizontal/>
+      <TarefasCompletas
+      listaDeletada = {listaDeletada}/>
     </ListaTarefasContainer>
   );
 }
